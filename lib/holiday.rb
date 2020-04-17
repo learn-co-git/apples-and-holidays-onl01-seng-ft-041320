@@ -83,7 +83,7 @@ def all_supplies_in_holidays(holiday_hash)
           end
         end
         new_key = new_key_array.join(' ')
-        puts "  " + new_key.capitalize + ": " + value.join(', ')
+        puts "  " + new_key + ": " + value.join(', ')
     else
       puts "  " + key.to_s.capitalize + ": " + value.join(', ')
     end
