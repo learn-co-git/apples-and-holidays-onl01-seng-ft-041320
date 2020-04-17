@@ -60,18 +60,35 @@ def all_supplies_in_holidays(holiday_hash)
   # Summer:
   #   Fourth Of July: Fireworks, BBQ
   # etc.
+  fixed_array = []
+  alpha = 'abcdefghijklmnopqrstuvwxyz'
   holiday_hash.each do |k, v|
     puts k.to_s.capitalize + ":"
     v.each do |key, value|
-      if(key.includes("_"))
-        array = key.split('')
-        array
+      if(key.to_s.include?("_"))
+        array = key.to_s.split('')
+        array.each do |ele|
+          if alpha.include?(ele)
+            fixed_array << ele
+          else
+            fixed_array << " "
+          end
+        end
+        new_key = fixed_array.join('')
+        fixed_array = []
+        new_key.each_char.with_index do |char, i|
+          if char == " "
+            new_key[i + 1] = new_key[i + 1].upcase
+          end
+        end
+
+        puts "  " + new_key.capitalize + ": " + value.join(', ')
+    else
       puts "  " + key.to_s.capitalize + ": " + value.join(', ')
-
-
+    end
+    end
   end
  end
-end
 
 def all_holidays_with_bbq(holiday_hash)
   # return an array of holiday names (as symbols) where supply lists
