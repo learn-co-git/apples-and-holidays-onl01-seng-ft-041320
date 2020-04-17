@@ -76,12 +76,13 @@ def all_supplies_in_holidays(holiday_hash)
         end
         new_key = fixed_array.join('')
         fixed_array = []
-        new_key.each_char.with_index do |char, i|
-          if char == " "
-            new_key[i + 1] = new_key[i + 1].upcase
+        new_key_array = new_key.split(' ')
+        new_key_array.each_with_index do |ele ,i|
+          if ele != "of"
+            new_key_array[i] = new_key_array[i].capitalize
           end
         end
-
+        new_key = new_key_array.join(' ')
         puts "  " + new_key.capitalize + ": " + value.join(', ')
     else
       puts "  " + key.to_s.capitalize + ": " + value.join(', ')
@@ -89,6 +90,20 @@ def all_supplies_in_holidays(holiday_hash)
     end
   end
  end
+
+
+def all_holidays_with_bbq(holiday_hash)
+  # return an array of holiday names (as symbols) where supply lists
+  # include the string "BBQ"
+  holiday_hash.each do |k, v|
+    v.each do |key, value|
+      if(value.include?("BBQ"))
+        return key
+      end
+    end
+  end
+
+end
 
 def all_holidays_with_bbq(holiday_hash)
   # return an array of holiday names (as symbols) where supply lists
