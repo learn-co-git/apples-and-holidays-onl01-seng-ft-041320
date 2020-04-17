@@ -78,9 +78,8 @@ def all_supplies_in_holidays(holiday_hash)
         fixed_array = []
         new_key_array = new_key.split(' ')
         new_key_array.each_with_index do |ele ,i|
-          if ele != "of"
             new_key_array[i] = new_key_array[i].capitalize
-          end
+          
         end
         new_key = new_key_array.join(' ')
         puts "  " + new_key + ": " + value.join(', ')
